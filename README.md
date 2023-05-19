@@ -47,6 +47,7 @@ Write here why solving this problem is important
 
 ## Data Collection and EDA
 
+To collect the data, we used
 
 ## Modeling
 
