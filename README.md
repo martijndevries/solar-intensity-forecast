@@ -17,6 +17,7 @@ This repository consists of the following:
    <ol>
     <li> In <b>data_collection.ipynb</b>, we collected 5 years of weather data from the NSRDB database </li>
     <li> In <b>EDA.ipynb</b> we look at the data and investigate seasonal trends. We also engineer several new features </li> 
+    <li> In <b>RNN_model.ipynb</b>, we use a Recurrent Neural Network to forecast the GHI 1 day into the future, based on the weather data from the previous 4 days </li>
     <li> .... </li>
    </ol>
   <li> The directory <code>./data</code> contains 1) the dataframe as collected from the NSRDB, and 2) the cleaned, feature engineered dataframe that is used for the various models.
