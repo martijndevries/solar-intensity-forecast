@@ -28,6 +28,23 @@ This repository consists of the following:
 
 Write here why solving this problem is important
 
+## Data Dictionary
+
+
+|Feature|Type|Dataset|Description|
+|---|---|---|---|
+|Dew Point| Numerical |NSDRB 
+|Pressure| Numerical |NSDRB 
+|Relative Humidity| Numerical |NSDRB 
+|Temperature| Numerical |NSDRB 
+|Wind_x| Numerical | NSDRB | X-component of wind velocity. Feature engineered from Wind direction and speed|
+|Wind_y| Numerical | NSDRB | y-component of wind velocity. Feature engineered from Wind direction and speed|
+|Day Seasonality | Numerical | NSDRB | Sinoid function that captures daily variance in the GHI. Feature engineered |
+|Year Seasonality | Numerical | NSDRB | Sinoid function that captures yearly variance in the GHI. Feature engineered |
+|Cloud Type | Categorical | NSDRB | Categorical variable indicating type of cloud. See notebook for more details |
+|GHI| numerical| NSDRB| ***Target variable***- Global Horizontal Irradiance|
+
+
 ## Data Collection and EDA
 
 
