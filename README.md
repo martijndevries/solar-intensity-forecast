@@ -21,7 +21,7 @@ This repository consists of the following:
     <li> In <b>data_collection.ipynb</b>, we collected 5 years of weather data (2016 - 2020) from the NSRDB database </li>
     <li> In <b>EDA.ipynb</b> we look at the data and investigate seasonal trends. We also engineer several new features </li> 
     <li> In <b>RNN_model.ipynb</b>, we use a Recurrent Neural Network to forecast the GHI 1 day into the future, based on the weather data from the previous 4 days </li>
-    <li> In <b>WaveNet_model.ipynb</b>we .. </li>
+    <li> In <b>WaveNet_model.ipynb,</b> we apply a modified version of Google's generative WaveNet model to forecasting GHI 1 day in the future based on the weather conditions on the previous 10 days.   </li>
     <li> In <b>.....</b>, we .. </li>
     <li> Finally, in <b>modeling_insights.ipynb</b>, we </li>
    </ol>
@@ -59,9 +59,24 @@ In this project, we have used the NSRDB data in two different ways: Firstly, the
 
 ## Data Collection and EDA
 
-To collect the data, we used
+To collect the data, we used the api available from the NSRDB to directly read to a csv using a url format. To run the data collection notebook, one needs an api token from the NSRDB that can be obtained [here](https://developer.nrel.gov/signup/).
+
+We collected data from 2016 to the most recent available year of 2020, which resulted in a 5 year time period of 30 minute intervals. This data included sensor collected weather features, sensor collected Solar Iridiance values, such as DHI and DNI, and model predict GHI values from NSRDB algorithms.  
+
 
 ## Modeling
+
+We decided to forecast out target variable, GHI, using 3 different models:
+
+_RNN model_
+- In this model
+
+_WaveNet model_
+- In our analysis, we used a modifidied version of the model described in this [paper](https://arxiv.org/pdf/1609.03499.pdf). The model described in the model is used as a generative model for audio signals.The main feature of the model is the use of _dilated_ convolutional layers for sequencing, as opposed to the conventional recurrent layers. We decided to use this model because it would be well suited for predictions of large sequences, which in our case would be a large amount of time steps. 
+- Our approach had a couple changes to the model:
+    - First, instead of a _sigmoid_ activation in the Gated Activation Layers, we used a _relu_ activation because this [paper](https://arxiv.org/pdf/1703.04691.pdf) on dilated convolutions suggests it is a more suited activation to a non-stationary time-series, which GHI is because of it's seasonality.
+    - Secondly, a linear dense layer was used as the output to create predictions for each time step in the future according to the number of output neurons. 
+
 
 ## Insights
 
