@@ -126,7 +126,7 @@ We established our baseline model by taking the the 1827 daily GHI curves from o
 
 In our WaveNet model, we used the meteorlogical data and NSRDB satellite imagery from the 4 previous days to forecast GHI. From our modeling process, we had found that our model was overfitting on our test, even through the use of *l2* regularization in the dilated convolutional layers in Gated Activation Blocks. 
 
-<img src="./figures/wavenet_24_hr_error.png" style="float: center; margin: 100px; width: 1200px"/>
+<img src="./figures/wavenet_24hr_error.png" style="float: center; margin: 100px; width: 1200px"/>
 
 In the figure above, we are determining the error of our model in making predictions an *n* number of time steps up to 24 hours. We can see that both RSME and MAE follow a similar trend along 24 hr cycle of predictions, but there is a clear disconnect and smaller errors for the training set. In furture steps we plan to introduce different apporaches for regularization to bridge the gap in the errors on training and test sets. This would result in a more reliable model for the use case we are looking towards, which is potential solar energy.  
 
@@ -142,8 +142,10 @@ The model that performed the best on the training set was the Neural Prophet mod
 
 ## Conclusions
 
-In the upscaling and increased implementation of renewable energies, and specifically solar power, we found that one challenge where data science can be applied is forecasting of energy output. For solar power, this would be through the predictions of solar iradiance, GHI.  
+In the upscaling and increased implementation of renewable energies, and specifically solar power, we found that one challenge where data science can be applied is forecasting of energy output. For solar power, this would be through the predictions of global horizontal irradiance, or GHI.  
 
-From our analysis and model building, we found that are best perdicting model, with smaller errors, was our Neural Prophet model. This is the model that we would recommend to be used for local and national solar power plants and companies, as well as other non-renewable energy companies, to use in predicting solar power output, with the caveat that they are collecting data from the NSRDB. Because, our Propet Model is based on the forecasting GHI from previous, or lagged, GHI values, which are calculated from the NSRDB as well as other local senors. 
+From our analysis and model building, we found that our best predicting model, with smallest RMSE and MAE, was our Neural Prophet model. This is the model that we would recommend to be used for local and national solar power plants and companies, as well as other non-renewable energy companies, to use in predicting solar power output, with the caveat that it would require them to have their own model for the GHI, given that the prophet model is based on forecasting the GHI with previous, lagged GHI values. Unfortunately, the data from the NSRDB is not current, and so using these data would not be possible for up-to-date forecasting. 
 
-If the data from the NSRDB is not being used, an the company must solely rely on meteorological data, we recommend the use of our RNN model. This model, of the two models using meteorological data, performed the most reliably with smaller erros compared to the WaveNet model. 
+If only meteorological data is available, we recommend the use of our RNN model. This model, of the two models using meteorological data, performed the most reliably with smaller erros compared to the WaveNet model. 
+
+In all three models, we find that forecasting shorter-timescale events (like the sudden appearance of clouds) can be difficult, and it appears to be an important reason for why the model can sometimes make predictions that are very wrong. Further improvements could likely be made in this area. One way potential way to improve the models would be to forecast the solar irradiance not as a single value but as a range of values, within some probability interval. 
