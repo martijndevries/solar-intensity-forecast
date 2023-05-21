@@ -2,7 +2,16 @@
 
 By Andres Aguilar (insert email here)<br> 
 Martijn de Vries (martijndevries91@gmail.com) <br>
-and William Lopez (insert email here)
+and William Lopez (williamlopez9449@gmail.com)
+
+## Table of Contents
+1) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/data_collection.ipynb>Data Collection</a>
+2) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/EDA.ipynb>Exploratory Data Analysis</a>
+3) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/neural_prophet.ipynb>Neural Prophet Model</a>
+4) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/RNN_model.ipynb>Recurrent Neural Network Model</a>
+5) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/WaveNet_model.ipynb>WaveNet Model</a>
+6) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/modeling_insights.ipynb>Modeling Insights</a>
+
 
 ## Problem Statement
 
@@ -89,9 +98,11 @@ During the EDA process we also engineered several new features. 'Wind Direction'
 We decided to forecast our target variable, GHI, using 3 different models:
 
 _Neural Prophet model_
-- The [Neural Prophet](https://arxiv.org/abs/2111.15397?fbclid=IwAR2vCkHYiy5yuPPjWXpJgAJs-uD5NkH4liORt1ch4a6X_kmpMqagGtXyez4) is the successor to the original FBProphet, which was created by Facebook. In this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) we see the potential of Neural Prophet's ability to predict weather data, in this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) it was used to predict rain in Australia. Our goal was to use a similar application to predict _Global Horizontal Irradiation_ using this model.
+- The [Neural Prophet](https://arxiv.org/abs/2111.15397?fbclid=IwAR2vCkHYiy5yuPPjWXpJgAJs-uD5NkH4liORt1ch4a6X_kmpMqagGtXyez4) is the successor to the original FBProphet, which was created by Facebook. In this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) we see the potential of Neural Prophet's ability to predict weather data, in this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) it was used to predict rain in Australia. Our goal was to use a similar application to predict _Global Horizontal Irradiation_ using this model. Although neural prophet is performing relatively well one of the downsides to using this model is that it requires GHI in order to predict GHI, meaning the data would require additional modeling outside of the prophet model in order to have the variable we are trying to predict.
     - We used the model to predict 200 points into the most recent testing data, this gave us an insight into about 4 days and 4 hours. Neural Prophet has automatic selection of training hyperparameters and it also allows for plotting of forecast components which show us the trend, yearly, weekly, and daily seasonality.
- ![Forecast Component](../figures/forecast_component_plots.png)
+    - Below the plot shows us the GHI trend, yearly, weekly, and daily seasonality on the testing data. Although trend seems to be positive one thing to consider is that this model does not take other features into consideratio, meaning cloud coverage, wind speed, and even the temperature might play a role on whether or not the GHI would be increasing.
+ 
+ <img src="./figures/forecast_component_plots.png" style="float: center; margin: 100px; width: 1200px"/>
 
   
     
@@ -116,7 +127,7 @@ We established our baseline model by taking the the 1827 daily GHI curves from o
 |Model|Training RMSE|Testing RMSE|Training MAE|Testing MAE|
 |---|---|---|---|---|
 |Baseline | N/A  | 198.4 | N/A | 160.7 |
-|Neural Prophet|101.6|109.2|59.2|88.7 |
+|Neural Prophet|109.0|101.8|88.3|58.9 |
 |RNN| 106.5 | 119.9 | 72.1 | 78.0 |
 |WaveNet|enter data|enter data|enter data|enter data|
 
