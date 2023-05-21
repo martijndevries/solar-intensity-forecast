@@ -1,6 +1,6 @@
 # Project 4 - Solar Intensity Forecasting
 
-By Andres Aguilar (insert email here)<br> 
+By Andres Aguilar (aaguilar2100@gmail.com)<br> 
 Martijn de Vries (martijndevries91@gmail.com) <br>
 and William Lopez (williamlopez9449@gmail.com)
 
@@ -30,7 +30,7 @@ This repository consists of the following:
     <li> In <b>EDA.ipynb</b> we look at the data and investigate seasonal trends. We also engineer several new features </li> 
     <li> In <b>neural_prophet.ipynb</b>, we use Facebook's Neural Prophet model, a hybrid between a neural network and traditional time series methods. This model takes current GHI values to forecast the GHI into the future.</li>
     <li> In <b>RNN_model.ipynb</b>, we use a Recurrent Neural Network to forecast the GHI 1 day into the future, based on the weather data from the previous 4 days </li>
-    <li> In <b>WaveNet_model.ipynb,</b> we apply a modified version of Google's generative WaveNet model to forecasting GHI 1 day in the future based on the weather conditions on the previous 10 days.</li>
+    <li> In <b>WaveNet_model.ipynb,</b> we apply a modified version of Google's generative WaveNet model to forecasting GHI 1 day in the future based on the weather conditions on the previous 5 days.</li>
     <li> Finally, in <b>modeling_insights.ipynb</b>, we establish the baseline model, evaluate and compare our 3 models, and draw our conclusions</li>
    </ol>
   <li> The directory <code>./data</code> contains 1) the dataframe as collected from the NSRDB, and 2) the cleaned, feature engineered dataframe that is used for the various models.
@@ -123,12 +123,27 @@ _WaveNet model_
 
 We established our baseline model by taking the the 1827 daily GHI curves from our 5-year dataset, and averaging these 1827 daily curves. Additionally, we only score our models for timestamps where the solar zenith angle is below 90 degrees, i.e. when the sun is up. Because we care about how much solar energy can be extracted, our predictions when the sun is down are irrelevant. An overview of the baseline and individual model scores can be seen in the table below.
 
+
+In our WaveNet model, we used the meteorlogical data and NSRDB satellite imagery from the 4 previous days to forecast GHI. From our modeling process, we had found that our model was overfitting on our test, even through the use of *l2* regularization in the dilated convolutional layers in Gated Activation Blocks. 
+
+<img src="./figures/wavenet_24_hr_error.png" style="float: center; margin: 100px; width: 1200px"/>
+
+In the figure above, we are determining the error of our model in making predictions an *n* number of time steps up to 24 hours. We can see that both RSME and MAE follow a similar trend along 24 hr cycle of predictions, but there is a clear disconnect and smaller errors for the training set. In furture steps we plan to introduce different apporaches for regularization to bridge the gap in the errors on training and test sets. This would result in a more reliable model for the use case we are looking towards, which is potential solar energy.  
+
 ### Model scores (after filtering for Solar Zenith Angle)
 |Model|Training RMSE|Testing RMSE|Training MAE|Testing MAE|
 |---|---|---|---|---|
 |Baseline | N/A  | 198.4 | N/A | 160.7 |
 |Neural Prophet|109.0|101.8|88.3|58.9 |
 |RNN| 106.5 | 119.9 | 72.1 | 78.0 |
-|WaveNet|enter data|enter data|enter data|enter data|
+|WaveNet| 91.4 | 135.0 | 59.6 | 81.54 |
+
+The model that performed the best on the training set was the Neural Prophet model. 
 
 ## Conclusions
+
+In the upscaling and increased implementation of renewable energies, and specifically solar power, we found that one challenge where data science can be applied is forecasting of energy output. For solar power, this would be through the predictions of solar iradiance, GHI.  
+
+From our analysis and model building, we found that are best perdicting model, with smaller errors, was our Neural Prophet model. This is the model that we would recommend to be used for local and national solar power plants and companies, as well as other non-renewable energy companies, to use in predicting solar power output, with the caveat that they are collecting data from the NSRDB. Because, our Propet Model is based on the forecasting GHI from previous, or lagged, GHI values, which are calculated from the NSRDB as well as other local senors. 
+
+If the data from the NSRDB is not being used, an the company must solely rely on meteorological data, we recommend the use of our RNN model. This model, of the two models using meteorological data, performed the most reliably with smaller erros compared to the WaveNet model. 
