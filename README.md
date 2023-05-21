@@ -77,7 +77,36 @@ _WaveNet model_
     - First, instead of a _sigmoid_ activation in the Gated Activation Layers, we used a _relu_ activation because this [paper](https://arxiv.org/pdf/1703.04691.pdf) on dilated convolutions suggests it is a more suited activation to a non-stationary time-series, which GHI is because of it's seasonality.
     - Secondly, a linear dense layer was used as the output to create predictions for each time step in the future according to the number of output neurons. 
 
+_Neural Prophet model_
+- The [Neural Prophet](https://arxiv.org/abs/2111.15397?fbclid=IwAR2vCkHYiy5yuPPjWXpJgAJs-uD5NkH4liORt1ch4a6X_kmpMqagGtXyez4) is the successor to the original FBProphet, which was created by Facebook. In this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) we see the potential of Neural Prophet's ability to predict weather data, in this [article](https://medium.com/analytics-vidhya/neuralprophet-a-neural-network-based-time-series-model-3c74af3b0ec6) it was used to predict rain in Australia. Our goal was to use a similar application to predict _Global Horizontal Irradiation_ using this model.
+    - For our approach we first collected solar data from 2016 to 2020, which is the most recent year available. The data was collected in 30 minute time intervals which was later used as the time frequency for our analysis.
+    - We used the model to predict 200 points into the most recent testing data, this gave us an insight into about 4 days and 4 hours. Neural Prophet has automatic selection of training hyperparameters and it also allows for plotting of forecast components which show us the trend, yearly, weekly, and daily seasonality.
+    
+
+
+![Forecast Component](../figures/forecast_component_plots.png)
+
+
+
+
+
 
 ## Insights
+
+### Before Solar Zenith Angle Filter
+|Model|Training RMSE|Testing RMSE|Training MAE|Testing MAE|
+|---|---|---|---|---|
+|Neural Prophet|122.67|107.55|90.05|76.62|
+|RNN|enter data|enter data|enter data|enter data|
+|WaveNet|enter data|enter data|enter data|enter data|
+
+
+
+### After Solar Zenith Angle Filter
+|Model|Training RMSE|Testing RMSE|Training MAE|Testing MAE|
+|---|---|---|---|---|
+|Neural Prophet|317.56|334.29|272.31|263.34|
+|RNN|enter data|enter data|enter data|enter data|
+|WaveNet|enter data|enter data|enter data|enter data|
 
 ## Conclusions
