@@ -1,4 +1,4 @@
-# Project 4 - Solar Intensity Forecasting
+c# Project 4 - Solar Intensity Forecasting
 
 By Andres Aguilar (aaguilar2100@gmail.com)<br> 
 Martijn de Vries (martijndevries91@gmail.com) <br>
