@@ -134,7 +134,7 @@ In the figure above, we are determining the error of our model in making predict
 |Model|Training RMSE|Testing RMSE|Training MAE|Testing MAE|
 |---|---|---|---|---|
 |Baseline | N/A  | 198.4 | N/A | 160.7 |
-|Neural Prophet|109.0|101.8|88.3|58.9 |
+|Neural Prophet|120.48|101.96|87.82|59.25 |
 |RNN| 106.5 | 119.9 | 72.1 | 78.0 |
 |WaveNet| 91.4 | 135.0 | 59.6 | 81.54 |
 
