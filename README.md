@@ -66,16 +66,16 @@ We have used the NSRDB data in two different ways: Firstly, the GHI itself can b
 
 |Feature|Type|Dataset|Description|
 |---|---|---|---|
-|Dew Point| Numerical |NSDRB | Defined as 'the temperature to which air must be cooled to become saturated with water vapor', in degrees Celsius |
-|Pressure| Numerical |NSDRB | Air pressure in Millibar | 
-|Relative Humidity| Numerical |NSDRB |Percentage of water vapor in the air |
-|Temperature| Numerical |NSDRB | Air temperature in degrees Celsius | 
-|Wind_x| Numerical | NSDRB | X-component of wind velocity. Feature engineered from Wind direction and speed|
-|Wind_y| Numerical | NSDRB | y-component of wind velocity. Feature engineered from Wind direction and speed|
-|Day Seasonality | Numerical | NSDRB | Sinoid function that captures daily variance in the GHI. Feature engineered |
-|Year Seasonality | Numerical | NSDRB | Sinoid function that captures yearly variance in the GHI. Feature engineered |
-|Cloud Type | Categorical | NSDRB | Categorical variable indicating type of cloud. See notebook for more details |
-|GHI| numerical| NSDRB| ***Target variable***- Global Horizontal Irradiance in W/m2|
+|Dew Point| Numerical |NSRDB | Defined as 'the temperature to which air must be cooled to become saturated with water vapor', in degrees Celsius |
+|Pressure| Numerical |NSRDB | Air pressure in Millibar | 
+|Relative Humidity| Numerical |NSRDB |Percentage of water vapor in the air |
+|Temperature| Numerical |NSRDB | Air temperature in degrees Celsius | 
+|Wind_x| Numerical | NSRDB | X-component of wind velocity. Feature engineered from Wind direction and speed|
+|Wind_y| Numerical | NSRDB | y-component of wind velocity. Feature engineered from Wind direction and speed|
+|Day Seasonality | Numerical | NSRDB | Sinoid function that captures daily variance in the GHI. Feature engineered |
+|Year Seasonality | Numerical | NSRDB | Sinoid function that captures yearly variance in the GHI. Feature engineered |
+|Cloud Type | Categorical | NSRDB | Categorical variable indicating type of cloud. See notebook for more details |
+|GHI| numerical| NSRDB| ***Target variable***- Global Horizontal Irradiance in W/m2|
 
 
 ## Data Collection and EDA
