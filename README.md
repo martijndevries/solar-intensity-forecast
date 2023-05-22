@@ -35,7 +35,7 @@ This repository consists of the following:
    </ol>
   <li> The directory <code>./data</code> contains 1) the dataframe as collected from the NSRDB, and 2) the cleaned, feature engineered dataframe that is used for the various models.
    <li> The directory <code>./figures</code> contains all the figures that are saved during the analysis in the notebooks, in .png formats </li>
-    <li> The slides for the project presentation are in the file <code>project4_solar.pdf</code> </li>
+    <li> The slides for the project presentation are in the file <code>project4_solar_slides.pdf</code> </li>
 </ul>
 
 ## Software Requirements
