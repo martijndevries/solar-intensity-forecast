@@ -4,6 +4,27 @@ By Andres Aguilar (aaguilar2100@gmail.com)<br>
 Martijn de Vries (martijndevries91@gmail.com) <br>
 and William Lopez (williamlopez9449@gmail.com)
 
+## Problem Statement
+
+One of the problems faced with integration of renewable energies into the power grid is the reliability of power output forecasting from sources such as wind and solar. As data scientists, we have been tasked by the energy company PG&E with creating reliable predictions for solar intensity, which directly correlates to solar power output.
+
+Using weather data from the National Solar Radiation Database, we will build a predictive model to forecast the solar intensity in Los Angeles, one day in advance. We will use the root mean squared error and the mean absolute error to evaluate the success of our model, and compare the model scores  against a benchmark model of a solar intensity curve on an average day. Our predictive model can then be used to determine the amount of solar power that can be generated on a given day, such that other, non-renewable sources of energy production can be throttled or ramped up accordingly.
+
+## Software Requirements
+
+To run all the notebooks, the following python packages are required:
+<ul>
+    <li> Pandas </li>
+    <li> Numpy </li>
+    <li> Matplotlib </li>
+    <li> Seaborn </li>
+    <li> Scikit-Learn</li>
+    <li> Tensorflow.keras </li>
+    <li> Tensorflow_addons </li>
+    <li> Neuralprophet </li>
+    <li> Plotly </li>
+</ul>
+
 ## Table of Contents
 1) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/data_collection.ipynb>Data Collection</a>
 2) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/EDA.ipynb>Exploratory Data Analysis</a>
@@ -12,12 +33,6 @@ and William Lopez (williamlopez9449@gmail.com)
 5) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/WaveNet_model.ipynb>WaveNet Model</a>
 6) <a href=https://github.com/martijndevries/solar-intensity-forecast/blob/main/code/modeling_insights.ipynb>Modeling Insights</a>
 
-
-## Problem Statement
-
-One of the problems faced with integration of renewable energies into the power grid is the reliability of power output forecasting from sources such as wind and solar. As data scientists, we have been tasked by the energy company PG&E with creating reliable predictions for solar intensity, which directly correlates to solar power output.
-
-Using weather data from the National Solar Radiation Database, we will build a predictive model to forecast the solar intensity in Los Angeles, one day in advance. We will use the root mean squared error and the mean absolute error to evaluate the success of our model, and compare the model scores  against a benchmark model of a solar intensity curve on an average day. Our predictive model can then be used to determine the amount of solar power that can be generated on a given day, such that other, non-renewable sources of energy production can be throttled or ramped up accordingly.
 
 ## Repository Overview
     
@@ -37,19 +52,6 @@ This repository consists of the following:
    <li> The directory <code>./figures</code> contains all the figures that are saved during the analysis in the notebooks, in .png formats </li>
     <li> The slides for the project presentation are in the file <code>project4_solar_slides.pdf</code> </li>
 </ul>
-
-## Software Requirements
-
-To run all the notebooks, the following python packages are required:
-1) Pandas
-2) Numpy
-3) Matplotlib
-4) Seaborn 
-5) Scikit-learn
-6) Tensorflow.keras
-7) Tensorflow_addons
-8) Neuralprophet
-9) Plotly
 
 ## Dataset and approach
 
